@@ -28,13 +28,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jcpizzaui.models.CookiesData
 
 @Composable
-fun DetailsScreen(cookiesList: List<CookiesData>, index: Int?, modifier: Modifier = Modifier) {
+fun DetailsOffersScreen(cookieOffersList: List<CookiesData>, item: Int?, modifier: Modifier = Modifier) {
 
     val context = LocalContext.current
 
@@ -67,7 +68,7 @@ fun DetailsScreen(cookiesList: List<CookiesData>, index: Int?, modifier: Modifie
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = cookiesList[index!!].image,
+                    painter = cookieOffersList[item!!].image,
                     contentDescription = "",
                     modifier = Modifier
                         .size(130.dp)
@@ -78,7 +79,7 @@ fun DetailsScreen(cookiesList: List<CookiesData>, index: Int?, modifier: Modifie
                 Spacer(modifier = modifier.height(10.dp))
 
                 Text(
-                    text = cookiesList[index].name,
+                    text = cookieOffersList[item].name,
                     fontSize = 20.sp,
                     color = Color.White,
                     fontFamily = FontFamily.Serif
@@ -108,20 +109,26 @@ fun DetailsScreen(cookiesList: List<CookiesData>, index: Int?, modifier: Modifie
                         )
                     }
 
+                    cookieOffersList[item].normalPrice?.let {
+                        Text(
+                            text = it,
+                            color = Color.Red,
+                            fontSize = 18.sp,
+                            textDecoration = TextDecoration.LineThrough,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
                     Text(
-                        text = cookiesList[index].currentPrice,
-                        fontSize = 24.sp,
+                        text = cookieOffersList[item].currentPrice,
                         color = Color.White,
-                        fontFamily = FontFamily.Serif
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview2(){
-
 }

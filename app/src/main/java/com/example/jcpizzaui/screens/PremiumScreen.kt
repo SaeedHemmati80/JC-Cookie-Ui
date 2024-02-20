@@ -64,6 +64,7 @@ import com.example.jcpizzaui.models.CookiesData
 fun PremiumScreen(
     navController: NavController,
     cookiesList: List<CookiesData>,
+    cookieOffersList: List<CookiesData>,
     modifier: Modifier = Modifier,
 ) {
     val scrollBehavior =
@@ -89,7 +90,7 @@ fun PremiumScreen(
                 CookiesSection(navController = navController)
                 PremiumCookieCard(navController = navController, cookiesList = cookiesList)
                 Spacer(modifier = modifier.height(20.dp))
-                OffersSection()
+                OffersSection(navController = navController, cookieOffersList = cookieOffersList)
             }
 
         },
@@ -102,36 +103,14 @@ fun PremiumScreen(
 }
 
 @Composable
-fun OffersSection() {
-    OffersLabel()
-    CookieOffers()
+fun OffersSection(navController: NavController,cookieOffersList: List<CookiesData>, modifier: Modifier=Modifier) {
+    OffersLabel(modifier = modifier, navController,)
+    Spacer(modifier = modifier.height(10.dp))
+    CookieOffers(cookieOffersList = cookieOffersList)
 }
 
 @Composable
-fun CookieOffers(modifier: Modifier = Modifier) {
-    val cookieOffersList = listOf(
-        CookiesData(
-            image = painterResource(id = R.drawable.cookie3),
-            name = "Oatmeal \nCookie",
-            normalPrice = "20 $",
-            currentPrice = "14 $"
-        ), CookiesData(
-            image = painterResource(id = R.drawable.cookie7),
-            name = "Peanut \nCookie",
-            normalPrice = "21 $",
-            currentPrice = "14 $"
-        ), CookiesData(
-            image = painterResource(id = R.drawable.cookie8),
-            name = "Walnut \nCookie",
-            normalPrice = "22 $",
-            currentPrice = "15 $"
-        ), CookiesData(
-            image = painterResource(id = R.drawable.cookie9),
-            name = "Raisins \nCookie",
-            normalPrice = "18 $",
-            currentPrice = "14 $"
-        )
-    )
+fun CookieOffers(cookieOffersList: List<CookiesData>, modifier: Modifier = Modifier) {
 
     LazyRow(
         modifier
@@ -257,7 +236,7 @@ fun OffersCardBuilder(
 }
 
 @Composable
-fun OffersLabel(modifier: Modifier = Modifier) {
+fun OffersLabel(modifier: Modifier = Modifier, navController: NavController) {
     Row(
         modifier
             .fillMaxWidth()
@@ -274,6 +253,8 @@ fun OffersLabel(modifier: Modifier = Modifier) {
         )
 
         Text(
+            modifier = modifier
+                .clickable { navController.navigate(Screens.OfferSeeMore.route) },
             text = "See more",
             fontSize = 12.sp,
             color = Color(0xffe38035),
@@ -323,7 +304,7 @@ fun CardBuilder(
             modifier
                 .padding(top = 80.dp)
                 .height(150.dp)
-                .clickable { navController.navigate(Screens.Details.route + "?item=$item") }
+                .clickable { navController.navigate("${Screens.DetailsCookies.route}?item=$item") }
                 .width(160.dp),
             colors = CardDefaults.cardColors(Color(0xFF3D3434)),
             shape = RoundedCornerShape(25.dp, 25.dp, 90.dp, 25.dp),
@@ -445,7 +426,7 @@ fun CookiesSection(navController: NavController, modifier: Modifier = Modifier) 
             Text(
                 modifier = modifier
                     .clickable {
-                               navController.navigate(Screens.SeeMore.route)
+                               navController.navigate(Screens.CookieSeeMore.route)
                     },
                 text = "See more",
                 fontSize = 12.sp,

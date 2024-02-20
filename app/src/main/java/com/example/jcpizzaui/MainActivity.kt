@@ -68,6 +68,97 @@ class MainActivity : ComponentActivity() {
                         image = painterResource(id = R.drawable.cookie6),
                         name = "LowFat",
                         currentPrice = "21 \$"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie1),
+                        name = "Chocolate\nChips",
+                        currentPrice = "20 \$"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie2),
+                        name = "Double\nChocolate",
+                        currentPrice = "18 \$"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie4),
+                        name = "Sugar Free",
+                        currentPrice = "19 \$"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie5),
+                        name = "Diet Cookie",
+                        currentPrice = "24 \$"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie6),
+                        name = "LowFat",
+                        currentPrice = "21 \$"
+                    ),
+                )
+
+                val cookieOffersList = listOf(
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie3),
+                        name = "Oatmeal \nCookie",
+                        normalPrice = "20 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie7),
+                        name = "Peanut \nCookie",
+                        normalPrice = "21 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie8),
+                        name = "Walnut \nCookie",
+                        normalPrice = "22 $",
+                        currentPrice = "15 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie9),
+                        name = "Raisins \nCookie",
+                        normalPrice = "18 $",
+                        currentPrice = "14 $"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie3),
+                        name = "Oatmeal \nCookie",
+                        normalPrice = "20 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie7),
+                        name = "Peanut \nCookie",
+                        normalPrice = "21 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie8),
+                        name = "Walnut \nCookie",
+                        normalPrice = "22 $",
+                        currentPrice = "15 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie9),
+                        name = "Raisins \nCookie",
+                        normalPrice = "18 $",
+                        currentPrice = "14 $"
+                    ),
+                    CookiesData(
+                        image = painterResource(id = R.drawable.cookie3),
+                        name = "Oatmeal \nCookie",
+                        normalPrice = "20 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie7),
+                        name = "Peanut \nCookie",
+                        normalPrice = "21 $",
+                        currentPrice = "14 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie8),
+                        name = "Walnut \nCookie",
+                        normalPrice = "22 $",
+                        currentPrice = "15 $"
+                    ), CookiesData(
+                        image = painterResource(id = R.drawable.cookie9),
+                        name = "Raisins \nCookie",
+                        normalPrice = "18 $",
+                        currentPrice = "14 $"
                     )
                 )
                 // A surface container using the 'background' color from the theme
@@ -75,7 +166,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavGraph(cookiesList)
+                    NavGraph(cookiesList, cookieOffersList)
 
 
                 }

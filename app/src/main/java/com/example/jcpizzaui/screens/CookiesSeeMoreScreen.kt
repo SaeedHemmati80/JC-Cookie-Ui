@@ -36,7 +36,7 @@ import com.example.jcpizzaui.R
 import com.example.jcpizzaui.models.CookiesData
 
 @Composable
-fun SeeMoreScreen(navController: NavController, cookiesList: List<CookiesData>, modifier: Modifier = Modifier) {
+fun CookiesSeeMoreScreen(navController: NavController, cookiesList: List<CookiesData>, modifier: Modifier = Modifier) {
 
     LazyVerticalGrid(
         modifier = modifier
@@ -71,7 +71,7 @@ fun CardBuilderSeeMore(
             modifier
                 .padding(top = 80.dp)
                 .height(150.dp)
-                .clickable { navController.navigate(Screens.Details.route) }
+                .clickable { navController.navigate("${Screens.DetailsCookies.route}?item=$item") }
                 .width(160.dp),
             colors = CardDefaults.cardColors(Color(0xFF3D3434)),
             shape = RoundedCornerShape(16.dp),
